@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg2;
+package com.bcu.secondHouse_avg3;
 
 import org.apache.hadoop.io.Writable;
 
@@ -7,19 +7,19 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 /**
- * 自定义数据类型
+ * 自定义数据类型1
  */
 public class SecondHouseBean implements Writable {
     private Integer count;//总数
-    private Double totalPriceAvg;//总价平均值
-    private Double unitPriceAvg;//单价平均值
+    private Double totalPrice;//总价
+    private Double unitPrice;//单价
 
     public SecondHouseBean(){}
 
-    public void setAll(int count, double totalPriceAvg, double unitPriceAvg){
+    public void setAll(int count, double totalPrice, double unitPrice){
         this.setCount(count);
-        this.setTotalPriceAvg(totalPriceAvg);
-        this.setUnitPriceAvg(unitPriceAvg);
+        this.setTotalPrice(totalPrice);
+        this.setUnitPrice(unitPrice);
     }
 
     public Integer getCount() {
@@ -30,38 +30,38 @@ public class SecondHouseBean implements Writable {
         this.count = count;
     }
 
-    public Double getTotalPriceAvg() {
-        return totalPriceAvg;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalPriceAvg(Double totalPriceAvg) {
-        this.totalPriceAvg = totalPriceAvg;
+    public void setTotalPrice(Double totalPriceAvg) {
+        this.totalPrice = totalPriceAvg;
     }
 
-    public Double getUnitPriceAvg() {
-        return unitPriceAvg;
+    public Double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnitPriceAvg(Double unitPriceAvg) {
-        this.unitPriceAvg = unitPriceAvg;
+    public void setUnitPrice(Double unitPriceAvg) {
+        this.unitPrice = unitPriceAvg;
     }
 
     @Override
     public String toString() {
-        return this.count + "\t" + this.totalPriceAvg + "\t" + this.unitPriceAvg;
+        return this.count + "\t" + this.totalPrice + "\t" + this.unitPrice;
     }
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
         dataOutput.writeInt(count);
-        dataOutput.writeDouble(totalPriceAvg);
-        dataOutput.writeDouble(unitPriceAvg);
+        dataOutput.writeDouble(totalPrice);
+        dataOutput.writeDouble(unitPrice);
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
         this.count = dataInput.readInt();
-        this.totalPriceAvg = dataInput.readDouble();
-        this.unitPriceAvg = dataInput.readDouble();
+        this.totalPrice = dataInput.readDouble();
+        this.unitPrice = dataInput.readDouble();
     }
 }

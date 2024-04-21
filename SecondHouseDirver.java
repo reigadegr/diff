@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg2;
+package com.bcu.secondHouse_avg3;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -45,7 +45,7 @@ public class SecondHouseDirver extends Configured implements Tool {
 
         //output
         job.setOutputFormatClass(TextOutputFormat.class);
-        TextOutputFormat.setOutputPath(job, new Path("/output/secondhouse_avg2"));
+        TextOutputFormat.setOutputPath(job, new Path("/output/secondhouse_avg3"));
 
         //submit
         return job.waitForCompletion(true) ? 0 : -1;

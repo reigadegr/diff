@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg2;
+package com.bcu.secondHouse_avg3;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
@@ -15,7 +15,7 @@ public class SecondeHousePartition extends Partitioner<Text, SecondHouseBean> {
         if ("浦东".equals(address)) {
             //如果是分区0
             return 0;
-        }else{
+        } else {
             //如果不是分区1
             return 1;
         }

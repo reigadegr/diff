@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg2;
+package com.bcu.secondHouse_avg3;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparator;

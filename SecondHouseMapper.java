@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg2;
+package com.bcu.secondHouse_avg3;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * 二手房统计Mapper类
  * 输入的数据: key: 偏移量(LongWritable); value: 一行数据(Text)
- * 输出的数据: key: 地区(Text); value: 1 + 一套房的总价(SecondHouseBean)
+ * 输出的数据: key: 地区(Text); value: 1 + 一套房的总价 + 一套房的单价(SecondHouseBean)
  */
 public class SecondHouseMapper extends Mapper<LongWritable, Text, Text, SecondHouseBean> {
     //准备输出的key
@@ -26,7 +26,7 @@ public class SecondHouseMapper extends Mapper<LongWritable, Text, Text, SecondHo
         String address = infos[3];
         //获取总价信息并转化成double类型
         Double totalPrice = Double.parseDouble(infos[6]);
-        //湖区单价信息并转化成double类型
+        //获取单价信息并转化成double类型
         double unitPrice = Double.parseDouble(infos[7]);
         //封装输出的key
         outputKey.set(address);
