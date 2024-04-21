@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg1;
+package com.bcu.secondHouse_avg2;
 
 import org.apache.hadoop.io.Writable;
 
@@ -11,14 +11,15 @@ import java.io.IOException;
  */
 public class SecondHouseBean implements Writable {
     private Integer count;//总数
-    private Double totalPrice;//总价
+    private Double totalPriceAvg;//总价平均值
+    private Double unitPriceAvg;//单价平均值
 
-    public SecondHouseBean() {
-    }
+    public SecondHouseBean(){}
 
-    public void setAll(Integer count, double totalPrice) {
+    public void setAll(int count, double totalPriceAvg, double unitPriceAvg){
         this.setCount(count);
-        this.setTotalPrice(totalPrice);
+        this.setTotalPriceAvg(totalPriceAvg);
+        this.setUnitPriceAvg(unitPriceAvg);
     }
 
     public Integer getCount() {
@@ -29,28 +30,38 @@ public class SecondHouseBean implements Writable {
         this.count = count;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
+    public Double getTotalPriceAvg() {
+        return totalPriceAvg;
     }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPriceAvg(Double totalPriceAvg) {
+        this.totalPriceAvg = totalPriceAvg;
+    }
+
+    public Double getUnitPriceAvg() {
+        return unitPriceAvg;
+    }
+
+    public void setUnitPriceAvg(Double unitPriceAvg) {
+        this.unitPriceAvg = unitPriceAvg;
     }
 
     @Override
     public String toString() {
-        return this.count + "\t" + this.totalPrice;
+        return this.count + "\t" + this.totalPriceAvg + "\t" + this.unitPriceAvg;
     }
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
         dataOutput.writeInt(count);
-        dataOutput.writeDouble(totalPrice);
+        dataOutput.writeDouble(totalPriceAvg);
+        dataOutput.writeDouble(unitPriceAvg);
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
         this.count = dataInput.readInt();
-        this.totalPrice = dataInput.readDouble();
+        this.totalPriceAvg = dataInput.readDouble();
+        this.unitPriceAvg = dataInput.readDouble();
     }
 }

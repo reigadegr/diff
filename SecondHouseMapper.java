@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg1;
+package com.bcu.secondHouse_avg2;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -26,10 +26,12 @@ public class SecondHouseMapper extends Mapper<LongWritable, Text, Text, SecondHo
         String address = infos[3];
         //获取总价信息并转化成double类型
         Double totalPrice = Double.parseDouble(infos[6]);
+        //湖区单价信息并转化成double类型
+        double unitPrice = Double.parseDouble(infos[7]);
         //封装输出的key
         outputKey.set(address);
         //封装输出的value
-        outputValue.setAll(1, totalPrice);
+        outputValue.setAll(1, totalPrice, unitPrice);
         //使用上下文对象将key和value写出
         context.write(outputKey,outputValue);
     }

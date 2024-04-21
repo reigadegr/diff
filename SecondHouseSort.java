@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg1;
+package com.bcu.secondHouse_avg2;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparator;
@@ -18,6 +18,6 @@ public class SecondHouseSort extends WritableComparator {
     public int compare(Object a, Object b) {
         Text o1 = (Text) a;
         Text o2 = (Text) b;
-        return -o1.compareTo(o2);
+        return o1.compareTo(o2);
     }
 }

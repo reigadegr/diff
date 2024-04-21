@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg1;
+package com.bcu.secondHouse_avg2;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -21,15 +21,23 @@ public class SecondHouseReducer extends Reducer<Text, SecondHouseBean, Text, Sec
         int count = 0;
         //创建变量addressTotalPrice,用于计算总价格
         int addressTotalPrice = 0;
+        //创建变量addressUnitPrice,用于计算单价总金额
+        int addressUnitPrice = 0;
         //遍历迭代器
-        for(SecondHouseBean value: values){
+        for (SecondHouseBean value : values) {
             //计算总数量
             count += value.getCount();
-            //计算总金额
-            addressTotalPrice += value.getTotalPrice();
+            //计算总房价总金额
+            addressTotalPrice += value.getTotalPriceAvg();
+            //计算单价总金额
+            addressUnitPrice += value.getUnitPriceAvg();
         }
+        //计算总房价平均值
+        double totalPriceAvg = addressTotalPrice / count;
+        //计算单价平均值
+        double unitPriceAvg = addressUnitPrice / count;
         //封装输出的value
-        outputValue.setAll(count, addressTotalPrice);
+        outputValue.setAll(count, totalPriceAvg, unitPriceAvg);
         //使用上下文写出key和value
         context.write(key, outputValue);
     }

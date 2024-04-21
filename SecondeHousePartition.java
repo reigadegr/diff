@@ -1,4 +1,4 @@
-package com.bcu.secondHouse_avg1;
+package com.bcu.secondHouse_avg2;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
