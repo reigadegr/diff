@@ -1,35 +1,25 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import NProgress from "@/utils/progress";
+import { createRouter, createWebHashHistory } from "vue-router";
 import routes from "./routes";
-import { useTitle } from '@vueuse/core'
-import { getToken } from '@/utils/auth'
-import { pageDefaultTitle } from '@/settings';
+import { useCachedViewStoreHook } from "@/store/modules/cachedView";
+import NProgress from "@/utils/progress";
+import setPageTitle from "@/utils/set-page-title";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_BASE_URL),
+  history: createWebHashHistory(),
   routes
-})
-
-const whiteList = ['/login', '/register', '/404', '/403'];
+});
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  useTitle(to.meta.title || pageDefaultTitle)
-  if (getToken()) {
-    if (to.path === '/login') {
-      next({ path: '/' });
-    } else {
-      next();
-    }
-  } else if (whiteList.includes(to.path)) {
-    next();
-  } else {
-    next('/login');
-  }
+  // 路由缓存
+  useCachedViewStoreHook().addCachedView(to);
+  // 页面 title
+  setPageTitle(to.meta.title);
+  next();
 });
 
 router.afterEach(() => {
   NProgress.done();
 });
 
-export default router
+export default router;

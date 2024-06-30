@@ -1,49 +1,40 @@
 import Layout from "@/layout/index.vue";
+import Demo from "@/views/demo/index.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'root',
+    path: "/",
+    name: "root",
     component: Layout,
+    redirect: { name: "Demo" },
     children: [
       {
-        path: "/",
-        name: "home",
-        component: () => import('../views/home/index.vue'),
+        path: "demo",
+        name: "Demo",
+        component: Demo,
         meta: {
-          title: "首页",
-          isKeepAlive: true
+          title: "主页"
         }
       },
       {
         path: "tools",
-        name: "tools",
-        component: () => import('../views/tools/index.vue'),
+        name: "Tools",
+        component: () => import("@/views/tools/index.vue"),
         meta: {
-          title: "请求工具",
-          isKeepAlive: true
+          title: "工具"
         }
       },
       {
         path: "about",
-        name: "about",
-        component: () => import('../views/about/index.vue'),
+        name: "About",
+        component: () => import("@/views/about/index.vue"),
         meta: {
           title: "关于",
-          isKeepAlive: true
+          noCache: true
         }
-      },
+      }
     ]
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/login.vue')
-  },
-  {
-    path: '/:catchAll(.*)',
-    name: 'not-found',
-    component: () => import('../layout/404.vue')
-  },
-]
+  }
+];
+
 export default routes;

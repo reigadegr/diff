@@ -1,8 +1,13 @@
 {
-  "i18n-ally.localesPaths": ["src/locales/lang"],
-  "i18n-ally.displayLanguage": "zh-CN",
-  "i18n-ally.enabledParsers": ["js", "json"],
-  "i18n-ally.enabledFrameworks": ["vue"],
-  "i18n-ally.editor.preferEditor": true,
-  "i18n-ally.keystyle": "nested"
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
 }

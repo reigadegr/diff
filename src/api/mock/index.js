@@ -1,18 +1,17 @@
-import request from '@/utils/request'
-
+import { http } from "@/utils/http";
 
 export function getListApi(params) {
-  return request({
+  return http.request({
     url: "/list/get",
     method: "get",
     params
   });
 }
 
-export function getListApiError(data) {
-  return request({
+export function getListApiError(params) {
+  return http.request({
     url: "/list/error",
     method: "post",
-    data
+    params
   });
 }
