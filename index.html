@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+  <title>H5基础开发模板</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="loader">
+      <div class="loader-inner">
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+          <div class="loader-line"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="/src/main.js"></script>
+  <!-- 开启底部安全区适配 -->
+  <van-number-keyboard safe-area-inset-bottom />
+</body>
+
+</html>
+
+
+<style>
+  #app {
+    height: 100%;
+  }
+
+  .loader {
+    /* background: #000; */
+    /* background: radial-gradient(#777, #111); */
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+  }
+
+  .loader-inner {
+    bottom: 0;
+    height: 120px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+  }
+
+  .loader-line-wrap {
+    animation:
+      spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;
+    box-sizing: border-box;
+    height: 100px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transform-origin: 50% 100%;
+    width: 200px;
+  }
+
+  .loader-line {
+    border: 8px solid transparent;
+    border-radius: 100%;
+    box-sizing: border-box;
+    height: 200px;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+  }
+
+  .loader-line-wrap:nth-child(1) {
+    animation-delay: -50ms;
+  }
+
+  .loader-line-wrap:nth-child(2) {
+    animation-delay: -100ms;
+  }
+
+  .loader-line-wrap:nth-child(3) {
+    animation-delay: -150ms;
+  }
+
+  .loader-line-wrap:nth-child(4) {
+    animation-delay: -200ms;
+  }
+
+  .loader-line-wrap:nth-child(5) {
+    animation-delay: -250ms;
+  }
+
+  .loader-line-wrap:nth-child(1) .loader-line {
+    border-color: hsl(0, 100%, 60%);
+    height: 180px;
+    width: 180px;
+    top: 14px;
+  }
+
+  .loader-line-wrap:nth-child(2) .loader-line {
+    border-color: hsl(60, 100%, 60%);
+    height: 152px;
+    width: 152px;
+    top: 28px;
+  }
+
+  .loader-line-wrap:nth-child(3) .loader-line {
+    border-color: hsl(120, 100%, 60%);
+    height: 124px;
+    width: 124px;
+    top: 42px;
+  }
+
+  .loader-line-wrap:nth-child(4) .loader-line {
+    border-color: hsl(180, 100%, 60%);
+    height: 96px;
+    width: 96px;
+    top: 56px;
+  }
+
+  .loader-line-wrap:nth-child(5) .loader-line {
+    border-color: hsl(240, 100%, 60%);
+    height: 68px;
+    width: 68px;
+    top: 70px;
+  }
+
+  @keyframes spin {
+
+    0%,
+    15% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
